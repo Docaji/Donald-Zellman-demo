@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--    <script src="jquery-3.6.0.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    
+    <style>
+        .header {
+            font-weight:bold;
+            color:blue;
+        }
+        .myImage {
+            height:20px;
+            width:20px;
+        }
+    </style>
+</head>
+    
+<body>
+    <script>
+        var leaderBoards=[];
+        
+        $(document).ready(function(){
+          // jQuery methods go here...
+
+            buildTestJSONData();
+            addLeaderRowToTable();
+        });
+        
+        function buildTestJSONData(){
+            leaderBoards = [
+            {
+                rank:'1',
+                profilePicName: "trophy1.png",
+                userName:'Don Zellman III',
+                highScore: "100"
+            },
+            {
+                rank:'2',
+                profilePicName: "trophy2.png",
+                userName:'Don Zellman',
+                highScore: "90"
+            },
+            {
+                rank:'3',
+                profilePicName: "trophy3.png",
+                userName:'Bonnie Zellman',
+                highScore: "85"
+            }]  
+            ;
+        }
+        function addLeaderRowToTable(){
+            myRank="";
+            profilePicName="";
+            userName="";
+            highScore="";
+            
+            
+            for(var i = 0; i < leaderBoards.length; i++) {
+                myRank=leaderBoards[i].rank;
+                profilePicName=leaderBoards[i].profilePicName;
+                userName=leaderBoards[i].userName;
+                highScore=leaderBoards[i].highScore;
+                
+                addNewLeaderRow(myRank, profilePicName, userName, highScore);
+            } 
+            
+        }
+        function addNewLeaderRow(myRank, profilePicName, userName, highScore){
+            var html="";
+            
+            html="<tr>";
+            
+            html+="<td>" + myRank + "</td>";
+            html+="<td><img src='" + profilePicName + "' class='myImage'/></td>";
+            html+="<td>" + userName + "</td>";
+            html+="<td>" + highScore + "</td>";
+            
+            html+="</tr>";
+            
+            $("#myBody").append(html);
+        }
+    </script>
+    <div>
+        <div style="width:100%">This is a test page to add TRs to an HTML table</div>
+
+        <div>
+            <table>
+                <thead>
+                    <th id="headCol1" class="header rank">Rank</th>
+                    <th id="headCol2" class="header profile"></th>
+                    <th id="headCol2" class="header userName">Name</th>
+                    <th id="headCol2" class="header highScore">High Score</th>
+                </thead>
+                <tbody id="myBody">
+                    
+                <tr>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+    
+</html>
